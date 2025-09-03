@@ -1,0 +1,37 @@
+console.log("Start order processing...");
+
+function validateCart(callback) {
+  setTimeout(() => {
+    console.log("Cart validated!");
+    callback();
+  }, 2000);
+}
+
+function processPayment(callback) {
+  setTimeout(() => {
+    console.log("Payment processed!");
+    callback();
+  }, 1500);
+}
+
+function confirmShipping() {
+  setTimeout(() => {
+    console.log("Shipping confirmed!");
+  }, 1000);
+}
+
+// Nested callbacks (Callback Hell)
+validateCart(() => {
+  processPayment(() => {
+    confirmShipping();
+  });
+});
+
+console.log("Order in progress...");
+
+// Output:
+// Start order processing...
+// Order in progress...
+// (after 2s) Cart validated!
+// (after 1.5s) Payment processed!
+// (after 1s) Shipping confirmed!
